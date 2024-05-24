@@ -1,10 +1,5 @@
 import re
 
-with open('./input.txt', 'r') as f:
-  input = f.read()
-
-print(input)
-
 
 def is_palindrome(s):
   return s == s[::-1]
