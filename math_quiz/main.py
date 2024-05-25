@@ -112,19 +112,21 @@ print(f'8.: {terulet}')
 
 
 # Elköszönés
-def elkoszones(osszes_angol, osszes_magyar):
-    angolok = symbols('a')
-    magyarok = symbols('m')
-    egyenlet1 = Eq(osszes_angol, angolok)
-    egyenlet2 = Eq(osszes_magyar, 2 * magyarok)
-    angolok_szama = solve(egyenlet1, angolok)
-    return angolok_szama[0]
+E, M = symbols('E M')
 
-osszes_angol = 198
-osszes_magyar = 154
+# Egyenletek felírása
+equation1 = E * (E + M - 1) - 198
+equation2 = M * (E + M - 1) - 308
 
-angolok_szama = elkoszones(osszes_angol, osszes_magyar)
-print(f'9.: {angolok_szama}')
+# Egyenletek megoldása
+solution = solve((equation1, equation2), (E, M))
+
+# Csak pozitív egész megoldások szűrése
+valid_solutions = [(e, m) for e, m in solution if e > 0 and m > 0 and e.is_integer and m.is_integer]
+
+# Eredmény kiírása
+for e, m in valid_solutions:
+    print(f'9.: {valid_solutions[0][0]}')
 
 
 
